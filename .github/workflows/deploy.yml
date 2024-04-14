@@ -19,4 +19,11 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ebcddfd40ff4908b47e549c112aa9329
+          projectName: sample-site
+          directory: dist
+          wranglerVersion: '3'
